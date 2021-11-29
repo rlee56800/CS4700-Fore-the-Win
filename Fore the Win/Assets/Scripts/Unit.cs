@@ -15,12 +15,17 @@ public class Unit : MonoBehaviour
 
     public HealthBar healthBar;
     public Sprite deathSprite;
+    public Sprite standard;
+    public Sprite standard2;
 
     // Start is called before the first frame update
     void Start()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        //GameObject player = GameObject.FindGameObjectWithTag("Player");
+        //Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+
+        //canMove = true;
+        //StartCoroutine(SwapSprites());
 
         //spawner = new EnemySpawnScript();
         //spawner = FindObjectOfType<EnemySpawnScript>();
@@ -42,13 +47,27 @@ public class Unit : MonoBehaviour
         {
             collision.gameObject.GetComponent<PlayerController>().TakeDamage(1);
         }
+        if (health <= 0)
+        {
+            StopCoroutine(SwapSprites());
+        }
+    }
+
+    public IEnumerator SwapSprites()
+    {
+        while(health > 0)
+        {
+            yield return new WaitForSeconds(0.5f);
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = standard2;
+            yield return new WaitForSeconds(0.5f);
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = standard;
+        }
     }
 
     virtual public void OnDeath()
     {
         Destroy(gameObject);
         spawner.DecrementLiving();
-        //spawner.GetComponent<EnemySpawnScript>().DecrementLiving();
     }
 
     public void TakeDamage(float damage)
@@ -60,7 +79,6 @@ public class Unit : MonoBehaviour
         {
             isHit = true;
             this.gameObject.GetComponent<SpriteRenderer>().sprite = deathSprite;
-            Physics.IgnoreLayerCollision(6, 7);
             Invoke("OnDeath", 1);
         }
     }

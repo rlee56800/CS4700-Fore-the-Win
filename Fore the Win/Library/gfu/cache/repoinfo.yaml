@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 1
-  lastUpdatedAtString: 2021-11-25T22:59:21.195-08:00
-  initializedAtString: 2021-11-25T22:59:21.195-08:00
+  lastUpdatedAtString: 2021-11-29T00:10:37.643-08:00
+  initializedAtString: 2021-11-28T22:02:24.933-08:00
   currentGitRemote:
-    name: 
-    url: 
+    name: origin
+    url: https://github.com/rlee56800/CS4700-Fore-the-Win
     login: 
     user: 
     host: 
@@ -25,14 +25,14 @@ MonoBehaviour:
     token: 
   currentGitBranch:
     name: master
-    tracking: 
+    tracking: origin/master
   currentConfigBranch:
     name: master
     remote:
-      name: 
-      url: 
-    trackingBranch: 
+      name: origin
+      url: https://github.com/rlee56800/CS4700-Fore-the-Win
+    trackingBranch: master
   currentConfigRemote:
-    name: 
-    url: 
+    name: origin
+    url: https://github.com/rlee56800/CS4700-Fore-the-Win
   currentHead: 

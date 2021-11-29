@@ -26,6 +26,8 @@ public class CrwallerController : Unit
 
         StartCoroutine(CrwAttack());
         last_shot = Time.time;
+
+        StartCoroutine(SwapSprites());
     }
 
     void OnCollisionEnter2D(Collision2D coll)
@@ -86,6 +88,15 @@ public class CrwallerController : Unit
     void Update()
     {
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D coll)
+    {
+        if (coll.gameObject.CompareTag("Player"))
+        {
+            coll.gameObject.GetComponent<PlayerController>().TakeDamage(2);
+            Destroy(gameObject);
+        }
     }
 
     public void FireWarning(float lifetime, float speed, Vector3 direction)

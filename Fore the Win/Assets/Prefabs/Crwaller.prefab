@@ -406,6 +406,8 @@ MonoBehaviour:
   isHit: 0
   healthBar: {fileID: 5927048420364420537}
   deathSprite: {fileID: 21300000, guid: d2387f1f380b90549a77fd3c28dc0688, type: 3}
+  standard: {fileID: 21300000, guid: 8d41040c75d6f194cb5123bfbfee2f95, type: 3}
+  standard2: {fileID: 21300000, guid: 19c319f0fe2e7d549bd254a3a4520e07, type: 3}
   damage: 0
   warningShot: {fileID: 8452845826402559911, guid: e88d7e9799872c84386e4cbdd67b714b, type: 3}
   projectile: {fileID: 4301650665989794753, guid: 16ad499eb593dd34c9905ad0fc13558b, type: 3}

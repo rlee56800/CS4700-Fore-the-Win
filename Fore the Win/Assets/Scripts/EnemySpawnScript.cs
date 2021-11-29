@@ -8,20 +8,21 @@ public class EnemySpawnScript : MonoBehaviour
     // array order: BouncyBoi, Crwaller, Charger
     public int[] targetAmt = {3, 3, 3}; // target amount of each enemy
     public int[] curAmt = {0, 0, 0}; // current amount of each enemy
-    //public float nmeCurrent = 0; // amount of enemies currently on field
-    //public float max;
-    public float nmeLiving; // amount of living enemies on field
+    public float nmeLiving = 0; // amount of living enemies currently on field
+    public float max = 3;
+    public float nmeRemaining; // total amount of enemies that should be on the field
     public GameObject bboi;
     public GameObject crw;
     public GameObject ch;
     public float cooldown;
-    public bool needMore = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        nmeLiving = FindTotal(targetAmt);
-        Debug.Log(nmeLiving);
+        nmeRemaining = FindTotal(targetAmt);
+        nmeLiving = 0;
+        max = 3;
+        Debug.Log(nmeRemaining);
         StartCoroutine(EnemySpawn());
     }
 
@@ -30,16 +31,20 @@ public class EnemySpawnScript : MonoBehaviour
         // TODO spawn new enemy type, leave it for like 5 sec
         //while (FindTotal(curAmt) < FindTotal(targetAmt))
         //{
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1.5f);
+        Debug.Log("waited 1.5s");
         while(FindTotal(curAmt) < FindTotal(targetAmt))
-        { 
+        {
+            Debug.Log("FindTotal(curAmt) < FindTotal(targetAmt)");
             int chosen = Random.Range(0, 3);
-
-            if (curAmt[chosen] < targetAmt[chosen]) // while there's less than max amt of enemies on field
+            yield return new WaitForSeconds(Random.Range(1, 2));
+            if ((curAmt[chosen] < targetAmt[chosen]) && (nmeLiving < max))
+            // while there's less than max amt of a specific enemy and less than max amt of enemies on field
             {
+                Debug.Log("(curAmt[chosen] < targetAmt[chosen]) && (nmeLiving < max)");
                 curAmt[chosen] += 1;
-                //nmeLiving += 1;
-                yield return new WaitForSeconds(Random.Range(0, 5));
+                nmeLiving += 1;
+                //nmeRemaining += 1;
                 //Debug.Log("Num: " + chosen + " curAmt: " + curAmt[chosen] + " targetAmt: " + targetAmt[chosen]);
                 switch (chosen)
                 {
@@ -91,10 +96,11 @@ public class EnemySpawnScript : MonoBehaviour
 
     public void DecrementLiving()
     {
+        nmeRemaining -= 1;
         nmeLiving -= 1;
         //nmeCurrent--;
-        //Debug.Log(nmeLiving);
-        if(nmeLiving == 0)
+        //Debug.Log(nmeRemaining);
+        if(nmeRemaining == 0)
         {
             StartCoroutine(EndGame());
         }

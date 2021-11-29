@@ -1095,7 +1095,15 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5670605304219494777, guid: 0a4648669210b4a4895069b29365e3ae, type: 3}
+      propertyPath: max
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5670605304219494777, guid: 0a4648669210b4a4895069b29365e3ae, type: 3}
       propertyPath: nmeLiving
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5670605304219494777, guid: 0a4648669210b4a4895069b29365e3ae, type: 3}
+      propertyPath: nmeRemaining
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5670605304219494777, guid: 0a4648669210b4a4895069b29365e3ae, type: 3}

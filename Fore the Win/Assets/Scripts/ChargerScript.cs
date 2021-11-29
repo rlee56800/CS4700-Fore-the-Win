@@ -23,6 +23,7 @@ public class ChargerScript : Unit
         movementSpd = -40 * speed;
 
         //StartCoroutine(ChAttack());
+        StartCoroutine(SwapSprites());
     }
 
     void OnCollisionEnter2D(Collision2D coll)

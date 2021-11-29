@@ -13,18 +13,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 2
-  lastUpdatedAtString: 2021-11-25T22:59:21.834-08:00
-  initializedAtString: 2021-11-25T22:59:21.819-08:00
+  lastUpdatedAtString: 2021-11-29T00:10:39.293-08:00
+  initializedAtString: 2021-11-28T22:02:30.156-08:00
   localBranches: []
-  remoteBranches: []
-  remotes: []
+  remoteBranches:
+  - name: origin/master
+    tracking: '[None]'
+  remotes:
+  - name: origin
+    url: https://github.com/rlee56800/CS4700-Fore-the-Win
+    login: 
+    user: 
+    host: 
+    function: 0
+    token: 
   localConfigBranches:
     keys: []
     values: []
   remoteConfigBranches:
-    keys: []
-    subKeys: []
-    subKeyValues: []
+    keys:
+    - origin
+    subKeys:
+    - Values:
+      - master
+    subKeyValues:
+    - Values:
+      - name: master
+        remote:
+          name: origin
+          url: https://github.com/rlee56800/CS4700-Fore-the-Win
+        trackingBranch: 
   configRemotes:
-    keys: []
-    values: []
+    keys:
+    - origin
+    values:
+    - name: origin
+      url: https://github.com/rlee56800/CS4700-Fore-the-Win
