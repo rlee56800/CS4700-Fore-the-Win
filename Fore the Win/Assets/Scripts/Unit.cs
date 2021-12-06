@@ -12,11 +12,14 @@ public class Unit : MonoBehaviour
     public float playerDmg = 1;
     public EnemySpawnScript spawner;// = new EnemySpawnScript();
     public bool isHit = false;
+    public float dmgDealt = 1;
 
     public HealthBar healthBar;
     public Sprite deathSprite;
     public Sprite standard;
     public Sprite standard2;
+
+    private bool canHurt = true;
 
     // Start is called before the first frame update
     void Start()
@@ -43,13 +46,9 @@ public class Unit : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Debug.Log("Hit");
-        if(collision.gameObject.CompareTag("Player"))
+        if(collision.gameObject.CompareTag("Player") && canHurt)
         {
-            collision.gameObject.GetComponent<PlayerController>().TakeDamage(1);
-        }
-        if (health <= 0)
-        {
-            StopCoroutine(SwapSprites());
+            collision.gameObject.GetComponent<PlayerController>().TakeDamage(dmgDealt);
         }
     }
 
@@ -58,9 +57,9 @@ public class Unit : MonoBehaviour
         while(health > 0)
         {
             yield return new WaitForSeconds(0.5f);
-            this.gameObject.GetComponent<SpriteRenderer>().sprite = standard2;
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = (health > 0) ? standard2 : deathSprite;
             yield return new WaitForSeconds(0.5f);
-            this.gameObject.GetComponent<SpriteRenderer>().sprite = standard;
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = (health > 0) ? standard : deathSprite;
         }
     }
 
@@ -78,6 +77,9 @@ public class Unit : MonoBehaviour
         if (health <= 0 && !isHit)
         {
             isHit = true;
+            canHurt = false;
+            Debug.Log(canHurt);
+            this.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             this.gameObject.GetComponent<SpriteRenderer>().sprite = deathSprite;
             Invoke("OnDeath", 1);
         }

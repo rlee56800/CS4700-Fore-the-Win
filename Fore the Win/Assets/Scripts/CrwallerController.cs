@@ -59,7 +59,7 @@ public class CrwallerController : Unit
 
     IEnumerator CrwAttack()
     {
-        while(true)
+        while(health > 0)
         {
             yield return new WaitForSeconds(Random.Range(1, 8));
             //Debug.Log("stop");
@@ -90,6 +90,7 @@ public class CrwallerController : Unit
 
     }
 
+    /*
     private void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.gameObject.CompareTag("Player"))
@@ -98,6 +99,7 @@ public class CrwallerController : Unit
             Destroy(gameObject);
         }
     }
+    */
 
     public void FireWarning(float lifetime, float speed, Vector3 direction)
     {

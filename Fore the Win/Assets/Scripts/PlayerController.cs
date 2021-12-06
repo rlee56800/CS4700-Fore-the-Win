@@ -17,20 +17,30 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveDirection;
     private Vector2 mousePosition;
 
+    // TODO monobehavior cant be set with new?
     public HealthBar healthBar = new HealthBar(); 
+
+    public Sprite standard;
+    public Sprite standard2;
 
     public Color flashColor;
     public Color regularColor;
     public float flashDelay;
     public float invincibilityDuration;
-    public BoxCollider2D triggerCollider;
     public SpriteRenderer mySprite;
     public bool isInvincible;
     
+
     void Start()
     {
+        //DontDestroyOnLoad (this.gameObject);
+
         playerHealth = maxHealth;
         healthBar.setMaxHealth((int)maxHealth);
+        isInvincible = false;
+        //Time.timeScale = 1;
+
+        StartCoroutine(SwapSprites());
     }
 
     // called once per frame
@@ -73,7 +83,7 @@ public class PlayerController : MonoBehaviour
     virtual public void OnDeath()
     {
         Destroy(gameObject);
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(8);
     }
     public void TakeDamage(float damage)
     {
@@ -103,4 +113,14 @@ public class PlayerController : MonoBehaviour
         isInvincible = false;
     }
 
+    public IEnumerator SwapSprites()
+    {
+        while(playerHealth > 0)
+        {
+            yield return new WaitForSeconds(0.3f);
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = standard2;
+            yield return new WaitForSeconds(0.3f);
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = standard;
+        }
+    }
 }

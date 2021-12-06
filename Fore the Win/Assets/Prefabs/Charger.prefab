@@ -401,10 +401,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   maxHealth: 10
-  speed: 7
-  playerDmg: 1
+  speed: 6
+  playerDmg: 4
   spawner: {fileID: 0}
   isHit: 0
+  dmgDealt: 4
   healthBar: {fileID: 3437582854490566396}
   deathSprite: {fileID: 21300000, guid: c23b23a189aec4640b183d0b41fe5a9d, type: 3}
   standard: {fileID: 21300000, guid: e842068c35204b547be140cf836c8486, type: 3}

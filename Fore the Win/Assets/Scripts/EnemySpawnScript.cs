@@ -9,7 +9,7 @@ public class EnemySpawnScript : MonoBehaviour
     public int[] targetAmt = {3, 3, 3}; // target amount of each enemy
     public int[] curAmt = {0, 0, 0}; // current amount of each enemy
     public float nmeLiving = 0; // amount of living enemies currently on field
-    public float max = 3;
+    public float max;
     public float nmeRemaining; // total amount of enemies that should be on the field
     public GameObject bboi;
     public GameObject crw;
@@ -21,7 +21,7 @@ public class EnemySpawnScript : MonoBehaviour
     {
         nmeRemaining = FindTotal(targetAmt);
         nmeLiving = 0;
-        max = 3;
+        //max = 3;
         Debug.Log(nmeRemaining);
         StartCoroutine(EnemySpawn());
     }
@@ -31,43 +31,49 @@ public class EnemySpawnScript : MonoBehaviour
         // TODO spawn new enemy type, leave it for like 5 sec
         //while (FindTotal(curAmt) < FindTotal(targetAmt))
         //{
-        yield return new WaitForSeconds(1.5f);
-        Debug.Log("waited 1.5s");
+        yield return new WaitForSeconds(1);
+        //Debug.Log("waited 1.5s");
         while(FindTotal(curAmt) < FindTotal(targetAmt))
         {
-            Debug.Log("FindTotal(curAmt) < FindTotal(targetAmt)");
-            int chosen = Random.Range(0, 3);
-            yield return new WaitForSeconds(Random.Range(1, 2));
-            if ((curAmt[chosen] < targetAmt[chosen]) && (nmeLiving < max))
-            // while there's less than max amt of a specific enemy and less than max amt of enemies on field
+            //Debug.Log("FindTotal(curAmt) < FindTotal(targetAmt)");
+            yield return new WaitForSeconds(Random.Range(0.5f, 1.5f));
+            if (nmeLiving < max)
             {
-                Debug.Log("(curAmt[chosen] < targetAmt[chosen]) && (nmeLiving < max)");
-                curAmt[chosen] += 1;
-                nmeLiving += 1;
-                //nmeRemaining += 1;
-                //Debug.Log("Num: " + chosen + " curAmt: " + curAmt[chosen] + " targetAmt: " + targetAmt[chosen]);
-                switch (chosen)
+                int chosen = Random.Range(0, 3);
+                if (curAmt[chosen] < targetAmt[chosen])// && (nmeLiving < max))
+                // while there's less than max amt of a specific enemy and less than max amt of enemies on field
                 {
-                    case 0:
-                        var newEnemy1 = Instantiate(bboi, transform.position + new Vector3(Random.value * 2, 0, Random.value * 4 - 2),
-                            transform.rotation);
-                        newEnemy1.GetComponent<Unit>().spawner = this;
-                        //nmeCurrent++;
-                        break;
-                    case 1:
-                        var newEnemy2 = Instantiate(crw, transform.position + new Vector3(Random.value * 2, 0, Random.value * 4 - 2),
-                            transform.rotation);
-                        newEnemy2.GetComponent<Unit>().spawner = this;
-                        //nmeCurrent++;
-                        break;
-                    case 2:
-                        var newEnemy3 = Instantiate(ch, transform.position + new Vector3(Random.value * 2, 0, Random.value * 4 - 2),
-                            transform.rotation);
-                        newEnemy3.GetComponent<Unit>().spawner = this;
-                        //nmeCurrent++;
-                        break;
-                    default:
-                        break;
+                    float y = Random.Range(0.0f, 0.75f);
+                    Debug.Log(y);
+                    yield return new WaitForSeconds(y);
+                    //Debug.Log("(curAmt[chosen] < targetAmt[chosen]) && (nmeLiving < max)");
+                    curAmt[chosen] += 1;
+                    nmeLiving += 1;
+                    //nmeRemaining += 1;
+                    //Debug.Log("Num: " + chosen + " curAmt: " + curAmt[chosen] + " targetAmt: " + targetAmt[chosen]);
+                    switch (chosen)
+                    {
+                        case 0:
+                            var newEnemy1 = Instantiate(bboi, transform.position + new Vector3(Random.value * 2, 0, Random.value * 4 - 2),
+                                transform.rotation);
+                            newEnemy1.GetComponent<Unit>().spawner = this;
+                            //nmeCurrent++;
+                            break;
+                        case 1:
+                            var newEnemy2 = Instantiate(crw, transform.position + new Vector3(Random.value * 2, 0, Random.value * 4 - 2),
+                                transform.rotation);
+                            newEnemy2.GetComponent<Unit>().spawner = this;
+                            //nmeCurrent++;
+                            break;
+                        case 2:
+                            var newEnemy3 = Instantiate(ch, transform.position + new Vector3(Random.value * 2, 0, Random.value * 4 - 2),
+                                transform.rotation);
+                            newEnemy3.GetComponent<Unit>().spawner = this;
+                            //nmeCurrent++;
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
         }
@@ -122,6 +128,11 @@ public class EnemySpawnScript : MonoBehaviour
     {
         //Debug.Log("good job");
         yield return new WaitForSeconds(1);
-        SceneManager.LoadScene(3);
+        if(SceneManager.GetActiveScene().buildIndex == 6){
+            SceneManager.LoadScene(7);
+        }
+        else{
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 }

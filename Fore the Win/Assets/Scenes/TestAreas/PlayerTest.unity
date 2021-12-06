@@ -159,6 +159,7 @@ GameObject:
   - component: {fileID: 786558848}
   - component: {fileID: 786558847}
   - component: {fileID: 786558849}
+  - component: {fileID: 786558850}
   m_Layer: 7
   m_Name: EnemyTest
   m_TagString: Enemy
@@ -242,6 +243,22 @@ CircleCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!58 &786558850
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 786558846}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -553,6 +570,32 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6013975303795938723, guid: 2ae66e09fddee6f4abba76d4a3b67e2f, type: 3}
   m_PrefabInstance: {fileID: 6013975303841904102}
   m_PrefabAsset: {fileID: 0}
+--- !u!61 &1261699864
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261699863}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 0.64}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.64, y: 0.64}
+  m_EdgeRadius: 0
 --- !u!61 &1261699868
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -921,6 +964,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 93980451}
     - target: {fileID: 6013975303795938735, guid: 2ae66e09fddee6f4abba76d4a3b67e2f, type: 3}
+      propertyPath: flashDelay
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6013975303795938735, guid: 2ae66e09fddee6f4abba76d4a3b67e2f, type: 3}
       propertyPath: sceneCamera
       value: 
       objectReference: {fileID: 899816944}
@@ -928,6 +975,14 @@ PrefabInstance:
       propertyPath: playerHitbox
       value: 
       objectReference: {fileID: 1261699868}
+    - target: {fileID: 6013975303795938735, guid: 2ae66e09fddee6f4abba76d4a3b67e2f, type: 3}
+      propertyPath: regularColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6013975303795938735, guid: 2ae66e09fddee6f4abba76d4a3b67e2f, type: 3}
+      propertyPath: invincibilityDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6013975303899968198, guid: 2ae66e09fddee6f4abba76d4a3b67e2f, type: 3}
       propertyPath: m_Layer
       value: 6

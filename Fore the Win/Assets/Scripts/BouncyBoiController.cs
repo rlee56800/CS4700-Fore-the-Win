@@ -22,6 +22,8 @@ public class BouncyBoiController : Unit
     {
 
     }
+
+    /*
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Debug.Log("Hit");
@@ -30,4 +32,6 @@ public class BouncyBoiController : Unit
             collision.gameObject.GetComponent<PlayerController>().TakeDamage(2);
         }
     }
+    */
+    
 }

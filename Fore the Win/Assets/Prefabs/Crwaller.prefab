@@ -401,9 +401,10 @@ MonoBehaviour:
   health: 8
   maxHealth: 8
   speed: 7
-  playerDmg: 1
+  playerDmg: 2
   spawner: {fileID: 0}
   isHit: 0
+  dmgDealt: 4
   healthBar: {fileID: 5927048420364420537}
   deathSprite: {fileID: 21300000, guid: d2387f1f380b90549a77fd3c28dc0688, type: 3}
   standard: {fileID: 21300000, guid: 8d41040c75d6f194cb5123bfbfee2f95, type: 3}

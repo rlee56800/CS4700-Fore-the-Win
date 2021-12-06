@@ -16,7 +16,7 @@ MonoBehaviour:
     m_Keys:
     - 
     m_Values: 01
-  RevisionSummary: crw forgot to turn laser back on
+  RevisionSummary: laser damages a lot
   ChangesSearchValue: 
   SelectedHistoryRevision: 
   HistoryPageNumber: 0

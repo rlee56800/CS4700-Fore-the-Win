@@ -81,7 +81,7 @@ public class CrwLaserScript : MonoBehaviour
     {
         if (coll.gameObject.CompareTag("Player"))
         {
-            coll.gameObject.GetComponent<PlayerController>().TakeDamage(3);
+            coll.gameObject.GetComponent<PlayerController>().TakeDamage(4);
             Destroy(gameObject);
         } 
     }
