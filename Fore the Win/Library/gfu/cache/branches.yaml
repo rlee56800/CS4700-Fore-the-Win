@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 2
-  lastUpdatedAtString: 2021-12-05T23:40:26.199-08:00
-  initializedAtString: 2021-12-05T21:28:35.453-08:00
+  lastUpdatedAtString: 2021-12-06T01:27:20.516-08:00
+  initializedAtString: 2021-12-06T01:20:01.430-08:00
   localBranches:
   - name: master
     tracking: origin/master
   remoteBranches:
+  - name: origin/gh-pages
+    tracking: '[None]'
   - name: origin/master
     tracking: '[None]'
   remotes:
@@ -43,9 +45,15 @@ MonoBehaviour:
     - origin
     subKeys:
     - Values:
+      - gh-pages
       - master
     subKeyValues:
     - Values:
+      - name: gh-pages
+        remote:
+          name: origin
+          url: https://github.com/rlee56800/CS4700-Fore-the-Win
+        trackingBranch: 
       - name: master
         remote:
           name: origin
